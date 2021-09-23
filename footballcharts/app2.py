@@ -137,7 +137,7 @@ def app():
 
     st.write('Select between three and ten variables:')
 
-    choices = st.multiselect('Stats selected', dict_labels.values())
+    choices = st.multiselect('Stats selected', sorted(dict_labels.values()))
 
     # Tests
     if len(choices) < 3:
@@ -201,22 +201,23 @@ def app():
                 range=[0, 1]
             )),
         showlegend=True,
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
     )
 
     st.plotly_chart(fig, use_container_width=True)
 
     # Add a table with values of player and League average
     dict_table = dict()
-    dict_table['Player'] = [player_choice, player_choice2]
     dict_table['Team'] = [team_choice, team_choice2]
     dict_table['Position'] = [player.position.item(), player2.position.item()]
 
     for i in range(len(options)):
         dict_table[dict_labels.get(options[i])] = [round(values[i], 2), round(values2[i], 2)]
 
-    table = pd.DataFrame(dict_table)
+    table = pd.DataFrame(dict_table, index=[player_choice, player_choice2])
 
     # Put the max value in blue
-    st.table(
+    st.write(
         table.style.format(formatter='{:.2f}', subset=list(table.columns)[3:]).highlight_max(
             subset=list(table.columns)[3:], color='skyblue', axis=0))
