@@ -1,11 +1,6 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-import requests
-import re
-from bs4 import BeautifulSoup
-import time
 import get_data
 from scipy import stats
 from get_data import features_def, features_misc, features_poss, features_pass, features_shot, features_gk, \
@@ -227,16 +222,15 @@ def app():
 
     # Add a table with values of player and League average
     dict_table = dict()
-    dict_table['Player'] = [player_choice, 'League average']
     dict_table['Team'] = [team_choice, '-']
     dict_table['Position'] = [str(player.position[0])] * 2
 
     for i in range(len(labels)):
         dict_table[labels[i]] = [round(values[i], 2), round(mean_values[i], 2)]
 
-    table = pd.DataFrame(dict_table)
+    table = pd.DataFrame(dict_table, index=[player_choice, 'League average'])
 
     # Put the max value in blue
-    st.table(
+    st.write(
         table.style.format(formatter='{:.2f}', subset=list(table.columns)[3:]).highlight_max(
             subset=list(table.columns)[3:], color='skyblue', axis=0))
