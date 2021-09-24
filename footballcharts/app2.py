@@ -1,11 +1,6 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-import requests
-import re
-from bs4 import BeautifulSoup
-import time
 import get_data
 from get_data import features_def, features_misc, features_poss, features_pass, features_shot, features_gk, \
     features_gk_adv, dict_labels
@@ -201,8 +196,7 @@ def app():
                 range=[0, 1]
             )),
         showlegend=True,
-        paper_bgcolor='rgba(0,0,0,0)',
-        plot_bgcolor='rgba(0,0,0,0)',
+        template=None
     )
 
     st.plotly_chart(fig, use_container_width=True)
