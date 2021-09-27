@@ -261,6 +261,8 @@ def get_final_data_per90(player_table, features_wanted):
         if var not in ['player', 'comp_level', 'squad', 'position', 'age', 'birth_year', 'minutes_90s']:
             if 'pct' not in var or 'avg' not in var:
                 df[var] = df[var].replace('', 0).astype('float64') / df['minutes_90s'].astype('float64')
+            elif var == 'passes_pct':
+                df[var] = df[var].replace('', 0).astype('float64')
             else:
                 df[var] = df[var].replace('', 0).astype('float64')
 
