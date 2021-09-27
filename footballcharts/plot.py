@@ -19,7 +19,7 @@ templates = {
            'touches_att_pen_area', 'npxg', 'shots_total'],
 
     'Advanced Midfielder': ['pressure_regains', 'dispossessed', 'fouled', 'dribbles_completed', 'xa', 'assisted_shots',
-           'progressive_passes', 'passes_pct', 'touches_def_pen_area', 'npxg', 'shots_total'],
+           'progressive_passes', 'passes_pct', 'touches_att_pen_area', 'npxg', 'shots_total'],
 
     'Striker': ['pressure_regains', 'aerials_won_pct', 'aerials_won', 'xa', 'assisted_shots', 'touches_att_pen_area',
            'npxg_per_shot', 'npxg', 'shots_on_target', 'shots_total']
