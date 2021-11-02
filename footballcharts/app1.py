@@ -163,7 +163,7 @@ def app():
     fig2 = go.Figure()
     fig2.add_trace(go.Bar(
         y=labels,
-        x=[stats.percentileofscore(data[v], x) for v, x in zip(plot_features, values)],
+        x=[stats.percentileofscore(-1 * data[v], -1 * x) if v in ['dispossessed', 'fouls'] else stats.percentileofscore(data[v], x) for v, x in zip(plot_features, values)],
         customdata=values,
         hovertemplate=
         '<b>Value</b>: %{customdata:.2f}' +
@@ -176,7 +176,7 @@ def app():
     ))
 
     mean_values = [data[v].mean() for v in plot_features]
-    means = [stats.percentileofscore(data[v], data[v].mean()) for v in plot_features]
+    means = [stats.percentileofscore(-1 * data[v], -1 * data[v].mean()) if v in ['dispossessed', 'fouls'] else stats.percentileofscore(data[v], data[v].mean()) for v in plot_features]
 
     for i in range(len(means)):
         fig2.add_shape(type='line',
