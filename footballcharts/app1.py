@@ -6,6 +6,7 @@ from scipy import stats
 from get_data import features_def, features_misc, features_poss, features_pass, features_shot, features_gk, \
     features_gk_adv, dict_labels
 from plot import templates, roles_templates_dict
+import time
 
 
 def app():
@@ -57,41 +58,48 @@ def app():
             my_bar = st.progress(0)
 
             soup_def = get_data.get_soup('https://fbref.com/en/comps/Big5/defense/players/Big-5-European-Leagues-Stats')
+            time.sleep(2)
             table_def = get_data.get_player_table(soup_def)
             df_def = get_data.get_final_data_per90(table_def, features_def)
 
             my_bar.progress(10)
             soup_misc = get_data.get_soup('https://fbref.com/en/comps/Big5/misc/players/Big-5-European-Leagues-Stats')
+            time.sleep(2)
             table_misc = get_data.get_player_table(soup_misc)
             df_misc = get_data.get_final_data_per90(table_misc, features_misc)
 
             my_bar.progress(20)
             soup_poss = get_data.get_soup(
                 'https://fbref.com/en/comps/Big5/possession/players/Big-5-European-Leagues-Stats')
+            time.sleep(2)
             table_poss = get_data.get_player_table(soup_poss)
             df_poss = get_data.get_final_data_per90(table_poss, features_poss)
 
             my_bar.progress(30)
             soup_pass = get_data.get_soup(
                 'https://fbref.com/en/comps/Big5/passing/players/Big-5-European-Leagues-Stats')
+            time.sleep(2)
             table_pass = get_data.get_player_table(soup_pass)
             df_pass = get_data.get_final_data_per90(table_pass, features_pass)
 
             my_bar.progress(40)
             soup_shot = get_data.get_soup(
                 'https://fbref.com/en/comps/Big5/shooting/players/Big-5-European-Leagues-Stats')
+            time.sleep(2)
             table_shot = get_data.get_player_table(soup_shot)
             df_shot = get_data.get_final_data_per90(table_shot, features_shot)
 
             my_bar.progress(50)
             soup_gk = get_data.get_soup(
                 'https://fbref.com/en/comps/Big5/keepers/players/Big-5-European-Leagues-Stats')
+            time.sleep(2)
             table_gk = get_data.get_player_table(soup_gk)
             df_gk = get_data.get_final_data_per90(table_gk, features_gk)
 
             my_bar.progress(60)
             soup_gk_adv = get_data.get_soup(
                 'https://fbref.com/en/comps/Big5/keepersadv/players/Big-5-European-Leagues-Stats')
+            time.sleep(2)
             table_gk_adv = get_data.get_player_table(soup_gk_adv)
             df_gk_adv = get_data.get_final_data_per90(table_gk_adv, features_gk_adv)
 
