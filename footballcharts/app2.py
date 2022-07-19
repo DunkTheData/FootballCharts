@@ -5,6 +5,7 @@ import get_data
 from get_data import features_def, features_misc, features_poss, features_pass, features_shot, features_gk, \
     features_gk_adv, dict_labels
 from plot import templates, roles_templates_dict
+import time
 
 
 def app():
